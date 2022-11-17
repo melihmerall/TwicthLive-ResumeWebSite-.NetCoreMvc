@@ -10,6 +10,7 @@ namespace Business.Abstract
     public interface IGenericService<T> where T:class,new()
     {
         List<T> GetList();
+        List<T> GetAll();
         T GetById(int id);
         void TAdd(T entity);
         void TRemove(T entity);

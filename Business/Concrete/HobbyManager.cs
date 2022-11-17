@@ -26,6 +26,11 @@ namespace Business.Concrete
             return _hobbyDal.GetList().ToList();
         }
 
+        public List<Hobby> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public Hobby GetById(int id)
         {
             return _hobbyDal.Get(x=>x.Id == id);

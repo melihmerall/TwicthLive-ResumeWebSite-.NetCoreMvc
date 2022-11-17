@@ -2,8 +2,9 @@ using Autofac;
 using Autofac.Core;
 using Autofac.Extensions.DependencyInjection;
 using Business.Abstract;
+
 using Business.Concrete;
-using Business.DependencyResolves.Autofac;
+using Business.Utilities.DependencyResolves.Autofac;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
 using DataAccess.Concrete.EntityFramework;
@@ -19,9 +20,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+
 //Context Object
 builder.Services.AddDbContext<ResumeContext>();
-
 
 var app = builder.Build();
 

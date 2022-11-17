@@ -26,6 +26,11 @@ namespace Business.Concrete
             return _aboutDal.GetList();
         }
 
+        public List<About> GetAll()
+        {
+            return _aboutDal.GetAll();
+        }
+
         public About GetById(int id)
         {
             return _aboutDal.Get(x=>x.Id == id);

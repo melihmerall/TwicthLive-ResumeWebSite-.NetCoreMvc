@@ -23,6 +23,11 @@ namespace Business.Concrete
             return _resumeDal.GetList().ToList();
         }
 
+        public List<Resume> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public Resume GetById(int id)
         {
             return _resumeDal.Get(x => x.Id == id);

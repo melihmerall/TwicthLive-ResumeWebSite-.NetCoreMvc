@@ -26,6 +26,11 @@ namespace Business.Concrete
             return _experienceDal.GetList().ToList();
         }
 
+        public List<Experience> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public Experience GetById(int id)
         {
             return _experienceDal.Get(x=>x.Id == id);

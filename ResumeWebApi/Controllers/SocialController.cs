@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ResumeWebApi.Controllers
@@ -15,11 +16,24 @@ namespace ResumeWebApi.Controllers
             _socialService = socialService;
         }
 
-        [HttpGet("api/getAllSocial")]
+        [HttpGet("get")]
         public IActionResult GetAllSocial()
         {
             var socialList = _socialService.GetList();
             return Ok(socialList);
+        }
+
+        [HttpPost("add")]
+        public IActionResult AddSocial(Social social)
+        {
+            _socialService.TAdd(social);
+            return Ok("başarılı");
+        }
+        [HttpDelete("delete")]
+        public IActionResult DeleteSocial(Social social)
+        {
+            _socialService.TAdd(social);
+            return Ok("başarılı");
         }
     }
 }

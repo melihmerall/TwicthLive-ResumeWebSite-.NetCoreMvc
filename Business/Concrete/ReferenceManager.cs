@@ -25,6 +25,11 @@ namespace Business.Concrete
             return _referenceDal.GetList();
         }
 
+        public List<Reference> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public Reference GetById(int id)
         {
             return _referenceDal.Get(x=>x.Id == id);

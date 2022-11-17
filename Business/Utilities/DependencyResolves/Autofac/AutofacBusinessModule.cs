@@ -10,7 +10,7 @@ using DataAccess.Abstract;
 using DataAccess.Concrete;
 using DataAccess.Concrete.EntityFramework;
 
-namespace Business.DependencyResolves.Autofac
+namespace Business.Utilities.DependencyResolves.Autofac
 {
     public class AutofacBusinessModule : Module
     {

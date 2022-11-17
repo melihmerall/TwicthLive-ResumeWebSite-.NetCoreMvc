@@ -1,4 +1,6 @@
-﻿using DataAccess.Abstract;
+﻿using Business.Abstract;
+using DataAccess.Abstract;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ResumeWebApi.Controllers
@@ -7,18 +9,33 @@ namespace ResumeWebApi.Controllers
     [Route("api/[controller]")]
     public class LanguageController : Controller
     {
-        private readonly ILanguageDal _languageDal;
+        private readonly ILanguageService _languageService;
 
-        public LanguageController(ILanguageDal languageDal)
+        public LanguageController(ILanguageService languageService)
         {
-            _languageDal = languageDal;
+            _languageService = languageService;
         }
 
         [HttpGet("api/getAllLanguageByLevel")]
-        public ActionResult GetAllLanguageByLevel(string level)
+        public ActionResult GetAllLanguageByLevel()
         {
-            var languageList = _languageDal.Get(x => x.Level == level);
+            var languageList = _languageService.GetList();
             return Ok(languageList);
+        }
+
+        [HttpPost("add")]
+        public IActionResult AddLanguage(Language language)
+        {
+            _languageService.TAdd(language);
+            return Ok("başarılı");
+        }
+
+        [HttpDelete("delete")]
+        public IActionResult DeleteLanguage(int id)
+        {
+            var language = _languageService.GetById(id);
+            _languageService.TRemove(language);
+            return Ok("başarılı");
         }
     }
 }

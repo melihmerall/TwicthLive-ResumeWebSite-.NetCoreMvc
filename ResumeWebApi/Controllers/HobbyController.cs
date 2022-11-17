@@ -22,7 +22,7 @@ namespace ResumeWebApi.Controllers
             return Ok(hobbyList);
         }
         [HttpGet("api/getHobbById")]
-        public ActionResult GetHobbyById(int id)
+        public IActionResult GetHobbyById(int id)
         {
             var hobbById = hobbyService.GetById(id);
 

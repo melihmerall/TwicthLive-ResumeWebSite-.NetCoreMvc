@@ -25,6 +25,11 @@ namespace Business.Concrete
             return _educationDal.GetList().ToList();
         }
 
+        public List<Education> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public Education GetById(int id)
         {
             return _educationDal.Get(x=>x.Id == id);

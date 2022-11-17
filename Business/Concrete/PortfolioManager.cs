@@ -25,6 +25,11 @@ namespace Business.Concrete
             return _portfolioDal.GetList();
         }
 
+        public List<Portfolio> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public Portfolio GetById(int id)
         {
             return _portfolioDal.Get(x => x.Id == id);

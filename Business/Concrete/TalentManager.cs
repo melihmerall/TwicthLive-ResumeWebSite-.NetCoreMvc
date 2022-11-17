@@ -25,6 +25,11 @@ namespace Business.Concrete
             return _talentDal.GetList();
         }
 
+        public List<Talent> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public Talent GetById(int id)
         {
             return _talentDal.Get(x=>x.Id == id);

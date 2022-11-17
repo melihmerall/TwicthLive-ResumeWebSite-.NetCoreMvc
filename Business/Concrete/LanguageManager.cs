@@ -25,6 +25,11 @@ namespace Business.Concrete
             return _languageDal.GetList();
         }
 
+        public List<Language> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public Language GetById(int id)
         {
             return _languageDal.Get(x=>x.Id == id);

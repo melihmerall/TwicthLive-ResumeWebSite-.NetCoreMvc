@@ -25,6 +25,11 @@ namespace Business.Concrete
             return _socialDal.GetList();
         }
 
+        public List<Social> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
         public Social GetById(int id)
         {
             return _socialDal.Get(x => x.Id == id);

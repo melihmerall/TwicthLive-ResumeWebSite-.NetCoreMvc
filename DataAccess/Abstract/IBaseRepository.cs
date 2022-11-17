@@ -11,7 +11,7 @@ namespace DataAccess.Abstract
     {
         T Get(Expression<Func<T, bool>> filter);
         List<T> GetList(Expression<Func<T, bool>> filter = null);
-
+        List<T> GetAll();
         void Create(T entity);
         void Update(T entity);
         void Delete(T entity);
