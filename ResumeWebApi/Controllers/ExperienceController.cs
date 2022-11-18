@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Utilities.AutoMapper;
+using Business.Utilities.Dtos.ExperienceDtos;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,9 +26,10 @@ namespace ResumeWebApi.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult AddExperience(Experience experience)
+        public IActionResult AddExperience(AddExperienceDto addExperienceDto)
         {
-            _experienceService.TAdd(experience);
+            Experience e = MapperUtil<AddExperienceDto, Experience>.Map(addExperienceDto);
+            _experienceService.TAdd(e);
             return Ok("başarılı");
         }
 
@@ -39,8 +42,20 @@ namespace ResumeWebApi.Controllers
 
         }
 
+        [HttpPut("update")]
+        public IActionResult UpdateExperience(ExperienceDto experienceDto)
+        {
+            Experience e = MapperUtil<ExperienceDto,Experience>.Map(experienceDto);
 
+            e.Id = experienceDto.Id;
+            e.Name = experienceDto.Name;
+            e.StartDate = experienceDto.StartDate;
+            e.EndDate = experienceDto.EndDate;
+            e.Description = experienceDto.Description;
+            e.Status = experienceDto.Status;
 
-
+            _experienceService.TUpdate(e);
+            return Ok("başarılı");
+        }
     }
 }

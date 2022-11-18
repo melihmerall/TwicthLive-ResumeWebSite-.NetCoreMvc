@@ -4,15 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Entities.Concrete
+namespace Business.Utilities.Dtos.EducationDtos
 {
-    public class Education : BaseEntity
+    public class EducationDto
     {
-
+        public int Id { get; set; }
+        public string Description { get; set; }
         public string SchoolName { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
+        public bool Status { get; set; }
         public float GraduationAverage { get; set; }
-
     }
 }

@@ -4,6 +4,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 17.4.33006.217
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResumeWeb", "ResumeWeb\ResumeWeb.csproj", "{AE6D6DCD-C7F9-4FD0-A4D2-7380F7573324}"
+	ProjectSection(ProjectDependencies) = postProject
+		{77F2FA7A-CC4C-477F-A450-188964A55C85} = {77F2FA7A-CC4C-477F-A450-188964A55C85}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entity\Entities.csproj", "{D6B1DBB8-CCBD-417A-B32B-5A6B0647F0EF}"
 EndProject
@@ -11,7 +14,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\Da
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{A2A041D7-F02F-4AD7-8B90-40FB9D6D9474}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ResumeWebApi", "ResumeWebApi\ResumeWebApi.csproj", "{77F2FA7A-CC4C-477F-A450-188964A55C85}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResumeWebApi", "ResumeWebApi\ResumeWebApi.csproj", "{77F2FA7A-CC4C-477F-A450-188964A55C85}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

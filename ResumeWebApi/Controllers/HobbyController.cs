@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Utilities.AutoMapper;
+using Business.Utilities.Dtos.HobbyDtos;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
@@ -30,9 +32,11 @@ namespace ResumeWebApi.Controllers
         }
 
         [HttpPost("AddHobby")]
-        public IActionResult AddHobby(Hobby hobby)
+        public IActionResult AddHobby(AddHobbyDto addHobbyDto)
         {
-            hobbyService.TAdd(hobby);
+            Hobby h = MapperUtil<AddHobbyDto, Hobby>.Map(addHobbyDto);
+            h.CreatedDate=DateTime.Now;
+            hobbyService.TAdd(h);
             return Ok("başarılı");
         }
 
@@ -41,6 +45,21 @@ namespace ResumeWebApi.Controllers
         {
             var hobby = hobbyService.GetById(id);
             hobbyService.TRemove(hobby);
+            return Ok("başarılı");
+        }
+
+        [HttpPut("update")]
+        public IActionResult UpdateHobby(UpdateHobbyDto updateHobbyDto)
+        {
+            Hobby h = MapperUtil<UpdateHobbyDto, Hobby>.Map(updateHobbyDto);
+            h.Name = updateHobbyDto.Name;
+            h.Description = updateHobbyDto.Description;
+            h.Status = updateHobbyDto.Status;
+            h.Id = updateHobbyDto.Id;
+            h.Status = updateHobbyDto.Status;
+
+            hobbyService.TUpdate(h);
+            
             return Ok("başarılı");
         }
     }

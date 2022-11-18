@@ -4,6 +4,7 @@ using Autofac.Extensions.DependencyInjection;
 using Business.Abstract;
 
 using Business.Concrete;
+using Business.Utilities.AutoMapper;
 using Business.Utilities.DependencyResolves.Autofac;
 using DataAccess.Abstract;
 using DataAccess.Concrete;
@@ -23,7 +24,7 @@ builder.Services.AddSwaggerGen();
 
 
 //Context Object
-builder.Services.AddDbContext<ResumeContext>();
+//builder.Services.AddDbContext<ResumeContext>();
 
 var app = builder.Build();
 

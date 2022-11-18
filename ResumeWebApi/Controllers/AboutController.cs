@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using Business.Abstract;
-
-
+using Business.Utilities.AutoMapper;
+using Business.Utilities.Dtos.AboutDtos;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
@@ -16,21 +16,22 @@ namespace ResumeWebApi.Controllers
         public AboutController(IAboutService aboutService)
         {
             this._aboutService = aboutService;
-     
+         
+
         }
         [HttpGet("get")]
         public ActionResult GetAllActiveAbout()
         {
             // if status = true, give me list of about.
-            var abouts = _aboutService.GetList().Where(x => x.Status == true);
+            var abouts = _aboutService.GetList();
             return Ok(abouts);
         }
 
         [HttpPost("add")]
-        public IActionResult AddAbout(About about)
+        public IActionResult AddAbout(AboutDto aboutDto)
         {
-            
-            _aboutService.TAdd(about);
+            About a = MapperUtil<AboutDto, About>.Map(aboutDto);
+            _aboutService.TAdd(a);
 
             return Ok("Başarılı");
         }
@@ -44,11 +45,20 @@ namespace ResumeWebApi.Controllers
         }
 
         [HttpPut("update")]
-        public IActionResult UpdateAbout(About about)
+        public IActionResult UpdateAbout(UpdateAboutDto updateAboutDto)
         {
-            
+            About a = MapperUtil<UpdateAboutDto, About>.Map(updateAboutDto);
 
-            _aboutService.TUpdate(about);
+            a.Name = updateAboutDto.Name;
+            a.Surname = updateAboutDto.Surname;
+            a.Age = updateAboutDto.Age;
+            a.BirthDate = updateAboutDto.BirthDate;
+            a.Email = updateAboutDto.Email;
+            a.PhoneNumber = updateAboutDto.PhoneNumber;
+            a.Description = updateAboutDto.Description;
+            a.Id = updateAboutDto.Id;
+
+            _aboutService.TUpdate(a);
             return Ok("başarılı");
 
 

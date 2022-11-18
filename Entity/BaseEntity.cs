@@ -11,8 +11,9 @@ namespace Entities
     {
         public int Id { get; set; }
         public string Description { get; set; }
-        public bool Status { get; set; }
-        public DateTime CreatedDate { get; set; }
+        public bool Status { get; set; } = true;
+        public DateTime CreatedDate { get; set; } = DateTime.Now;
+        public DateTime UpdatedDate { get; set; }
         public ICollection<Resume>? Resumes { get; set; } 
     }
 }

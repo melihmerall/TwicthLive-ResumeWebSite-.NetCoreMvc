@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Utilities.AutoMapper;
+using Business.Utilities.Dtos.EducationDtos;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
@@ -22,9 +24,10 @@ namespace ResumeWebApi.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult AddEducation(Education education)
+        public IActionResult AddEducation(EducationDto educationDto)
         {
-            _educationService.TAdd(education);
+            Education e = MapperUtil<EducationDto, Education>.Map(educationDto);
+            _educationService.TAdd(e);
             return Ok("başarılı");
         }
 
@@ -35,6 +38,24 @@ namespace ResumeWebApi.Controllers
             var education =  _educationService.GetById(id);
 
             _educationService.TRemove(education);
+            return Ok("Başarılı");
+        }
+
+        [HttpPut("update")]
+        public IActionResult UpdateEducation(EducationDto educationDto)
+        {
+            Education e = MapperUtil<EducationDto,Education>.Map(educationDto);
+
+            e.Description = educationDto.Description;
+            e.GraduationAverage = educationDto.GraduationAverage;
+            e.EndDate = educationDto.EndDate;
+            e.Id = e.Id;
+            e.StartDate = educationDto.StartDate;
+            e.SchoolName = educationDto.SchoolName;
+            e.Status = educationDto.Status;
+
+            _educationService.TUpdate(e);
+
             return Ok("Başarılı");
         }
 
