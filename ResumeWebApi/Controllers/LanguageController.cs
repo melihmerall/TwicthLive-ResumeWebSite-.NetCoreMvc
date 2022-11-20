@@ -1,4 +1,7 @@
-﻿using Business.Abstract;
+﻿using AutoMapper;
+using Business.Abstract;
+using Business.Utilities.AutoMapper;
+using Business.Utilities.Dtos.LanguageDtos;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
@@ -24,9 +27,10 @@ namespace ResumeWebApi.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult AddLanguage(Language language)
+        public IActionResult AddLanguage(AddLanguageDto languageDto)
         {
-            _languageService.TAdd(language);
+            Language l = MapperUtil<AddLanguageDto, Language>.Map(languageDto);
+            _languageService.TAdd(l);
             return Ok("başarılı");
         }
 
@@ -35,6 +39,22 @@ namespace ResumeWebApi.Controllers
         {
             var language = _languageService.GetById(id);
             _languageService.TRemove(language);
+            return Ok("başarılı");
+        }
+
+        [HttpPut("update")]
+        public IActionResult UpdateLanguage(UpdateLanguageDto updateLanguageDto)
+        {
+            Language l = MapperUtil<UpdateLanguageDto, Language>.Map(updateLanguageDto);
+
+            l.Name = updateLanguageDto.Name;
+            l.Level = updateLanguageDto.Level;
+            l.Description = updateLanguageDto.Description;
+            l.Id = updateLanguageDto.Id;
+            l.UpdatedDate = DateTime.Now;
+
+            _languageService.TUpdate(l);
+       
             return Ok("başarılı");
         }
     }

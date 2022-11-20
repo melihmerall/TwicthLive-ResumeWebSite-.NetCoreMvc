@@ -15,5 +15,6 @@ namespace Business.Utilities.Dtos.EducationDtos
         public DateTime EndDate { get; set; }
         public bool Status { get; set; }
         public float GraduationAverage { get; set; }
+        public DateTime UpdatedDate { get; set; }
     }
 }

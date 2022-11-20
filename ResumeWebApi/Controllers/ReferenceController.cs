@@ -1,5 +1,8 @@
 ﻿using System.Security.Cryptography.Xml;
+using AutoMapper;
 using Business.Abstract;
+using Business.Utilities.AutoMapper;
+using Business.Utilities.Dtos.ReferenceDtos;
 using Microsoft.AspNetCore.Mvc;
 using Reference = Entities.Concrete.Reference;
 
@@ -24,9 +27,10 @@ namespace ResumeWebApi.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult AddReference(Reference reference)
+        public IActionResult AddReference(AddReferenceDto reference)
         {
-            _referenceService.TAdd(reference);
+            Reference r = MapperUtil<AddReferenceDto, Reference>.Map(reference);
+            _referenceService.TAdd(r);
             return Ok("başarılı");
         }
         [HttpDelete("delete")]
@@ -37,6 +41,19 @@ namespace ResumeWebApi.Controllers
             return Ok("başarılı");
         }
 
+        [HttpPut("update")]
+        public IActionResult UpdateReference(UpdateReferenceDto updateReferenceDto)
+        {
+            Reference r = MapperUtil<UpdateReferenceDto, Reference>.Map(updateReferenceDto);
+            r.JobTitle = updateReferenceDto.JobTitle;
+            r.NameSurname = updateReferenceDto.NameSurname;
+            r.Description = updateReferenceDto.Description;
+            r.Id = updateReferenceDto.Id;
+            r.UpdatedDate = DateTime.Now;
+            
+            _referenceService.TUpdate(r);
+            return Ok("başarılı");
+        }
 
     }
 }

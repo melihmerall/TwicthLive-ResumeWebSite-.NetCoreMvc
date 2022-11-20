@@ -16,5 +16,6 @@ namespace Business.Utilities.Dtos.AboutDtos
         public string Age { get; set; }
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
+        public DateTime UpdatedDate { get; set; }
     }
 }

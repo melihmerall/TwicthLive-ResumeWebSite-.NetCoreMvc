@@ -1,4 +1,6 @@
 ﻿using Business.Abstract;
+using Business.Utilities.AutoMapper;
+using Business.Utilities.Dtos.PortfolioDtos;
 using Entities.Concrete;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,9 +25,10 @@ namespace ResumeWebApi.Controllers
         }
 
         [HttpPost("add")]
-        public IActionResult AddPortfol(Portfolio portfolio)
+        public IActionResult AddPortfol(AddPortfolioDto portfolio)
         {
-            _portfolioService.TAdd(portfolio);
+            Portfolio p = MapperUtil<AddPortfolioDto, Portfolio>.Map(portfolio);
+            _portfolioService.TAdd(p);
             return Ok("başarılı");
         }
 
@@ -37,6 +40,20 @@ namespace ResumeWebApi.Controllers
             return Ok("başarılı");
         }
 
+        [HttpPut("update")]
+        public IActionResult UpdatePortfolio(UpdatePortfolioDto updatePortfolioDto)
+        {
+            Portfolio p = MapperUtil<UpdatePortfolioDto, Portfolio>.Map(updatePortfolioDto);
+            p.Name = updatePortfolioDto.Name;
+            p.Description = updatePortfolioDto.Description;
+            p.EndDate = updatePortfolioDto.EndDate;
+            p.StarDate = updatePortfolioDto.StarDate;
+            p.UpdatedDate = DateTime.Now;
+
+            _portfolioService.TUpdate(p);
+
+            return Ok("başarılı");
+        }
 
     }
 }

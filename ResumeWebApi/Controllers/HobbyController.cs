@@ -47,7 +47,7 @@ namespace ResumeWebApi.Controllers
             hobbyService.TRemove(hobby);
             return Ok("başarılı");
         }
-
+        
         [HttpPut("update")]
         public IActionResult UpdateHobby(UpdateHobbyDto updateHobbyDto)
         {

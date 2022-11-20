@@ -17,13 +17,4 @@
     <ProjectReference Include="..\Entity\Entities.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Utilities\Dtos\LanguageDtos\" />
-    <Folder Include="Utilities\Dtos\TalentDtos\" />
-    <Folder Include="Utilities\Dtos\SocialDtos\" />
-    <Folder Include="Utilities\Dtos\ResusmeDtos\" />
-    <Folder Include="Utilities\Dtos\ReferenceDtos\" />
-    <Folder Include="Utilities\Dtos\PortfolioDtos\" />
-  </ItemGroup>
-
 </Project>
